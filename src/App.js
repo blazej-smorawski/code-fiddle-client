@@ -1,7 +1,16 @@
 import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import Interpreter from 'js-interpreter';
 import './App.css';
 
 function App() {
+  const [result, setResult] = useState('Working...')
+  const myInterpreter = new Interpreter('var x = 4;x+54');
+  useEffect(() => {
+    myInterpreter.run()
+    setResult(myInterpreter.value)
+  })
+
   return (
     <div className="App">
       <header className="App-header">
@@ -16,6 +25,9 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
+        </a>
+        <a>
+          Result: {result}
         </a>
       </header>
     </div>
