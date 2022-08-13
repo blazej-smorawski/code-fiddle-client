@@ -1,10 +1,34 @@
 .codeSpace {
-    display: flex;
-    flex-flow: row wrap;
-    background-color: turquoise;
-  }
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  width: 100%;
+}
   
-/* We tell all items to be 100% width, via flex-basis */
-.codeSpace > * {
-    flex: 1 100%;
+.blocksWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+/*
+ * Blocks inside wrappers
+ */
+.blocksWrapper > * {
+  background-color: rgb(44, 118, 214);
+  margin: 0.8vw;
+  padding: 0.4vw;
+  border-radius: 0.4vw;
+  box-shadow: 0.1vw 0.1vw rgba(0,0,0,127);
+}
+
+@media all and (max-width: 800px) {
+  /* We invert order of first sidebar and main
+   * And tell the main element to take twice as much width as the other two sidebars 
+   */
+  .codeSpace {
+    flex-direction: column;
+  }
 }
