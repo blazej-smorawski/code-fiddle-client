@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import React, { useState, useEffect } from 'react';
+import CodeSpace from './components/CodeSpace';
 import Interpreter from 'js-interpreter';
 import './App.css';
 
@@ -29,6 +30,7 @@ function App() {
         <a>
           Result: {result}
         </a>
+        <CodeSpace />
       </header>
     </div>
   );

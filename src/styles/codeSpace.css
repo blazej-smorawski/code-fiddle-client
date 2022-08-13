@@ -1,0 +1,10 @@
+.codeSpace {
+    display: flex;
+    flex-flow: row wrap;
+    background-color: turquoise;
+  }
+  
+/* We tell all items to be 100% width, via flex-basis */
+.codeSpace > * {
+    flex: 1 100%;
+}
