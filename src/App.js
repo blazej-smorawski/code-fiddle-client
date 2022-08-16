@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import CodeSpace from './components/CodeSpace';
 import Interpreter from 'js-interpreter';
-import './App.css';
+import { Header } from './components/Header';
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+
+const theme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
 
 function App() {
   const [result, setResult] = useState('Working...')
@@ -12,9 +20,12 @@ function App() {
   })
 
   return (
-    <div className="App">
-      <p>Result: {result}</p>
-      <CodeSpace />
+    <div>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Header/>
+        <CodeSpace/>
+      </ThemeProvider>
     </div>
   );
 }
