@@ -5,7 +5,7 @@ import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
 import '../utils/prism-dracula.css';
 
-import { Sheet, Typography } from '@mui/joy';
+import { Sheet, Typography, Badge} from '@mui/joy';
 import Card from '@mui/joy/Card';
 
 
@@ -19,9 +19,7 @@ function CodeBlock(props) {
 
     return (
         <Sheet variant='plain' sx={{width:'100%', height:'100%', display: 'flex', flexDirection:'column', gap:'4px', bgcolor:'transparent', width:'auto'}}>
-            <Card variant='soft'>
-                Tutaj umieść swój kod:
-            </Card>
+            <Badge badgeContent='Kod' color="success" variant='outlined' anchorOrigin={{vertical: 'top',horizontal: 'left',}}/>
             <Card variant='soft'>
                 <Editor
                     value={code}
@@ -34,9 +32,7 @@ function CodeBlock(props) {
                     }}
                 />
             </Card>
-            <Card variant='soft'>
-                Wynik działania kodu:
-            </Card>
+            <Badge badgeContent='Wynik' color='success' variant='outlined' anchorOrigin={{vertical: 'top',horizontal: 'left',}}/>
             <Card variant='soft'>
                 {result}
             </Card>

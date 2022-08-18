@@ -2,7 +2,8 @@ import CodeBlock from "./CodeBlock";
 import PixelsBlock from "./PixelsBlock";
 import * as utils from "../utils/arrays"
 
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
+import Interpreter from 'js-interpreter';
 import Grid from '@mui/material/Unstable_Grid2';
 
 function CodeSpace(props) {
@@ -25,7 +26,7 @@ function CodeSpace(props) {
                 <PixelsBlock pixels={pixels}/>
             </Grid>
             <Grid xs={12} sm={6}>
-                <CodeBlock/>
+                <CodeBlock code={code} result={result}/>
             </Grid>
             <Grid xs={12} sm={3}>
                 <PixelsBlock pixels={pixels}/>
