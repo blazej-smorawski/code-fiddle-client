@@ -1,28 +1,46 @@
 import * as React from 'react';
+import Editor from 'react-simple-code-editor';
+import { highlight, languages } from 'prismjs/components/prism-core';
+import 'prismjs/components/prism-clike';
+import 'prismjs/components/prism-javascript';
+import '../utils/prism-dracula.css';
 
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import TextareaAutosize from '@mui/material/TextareaAutosize';
+import { Sheet, Typography } from '@mui/joy';
+import Card from '@mui/joy/Card';
+
 
 function CodeBlock(props) {
+    const code = props.code
+    const result = props.result
+
+    const setCode = () => {
+        props.setCode(code)
+    }
+
     return (
-        <Card sx={{ minWidth: 160 }}>
-        <CardContent>
-        <TextareaAutosize
-            aria-label="empty textarea"
-            placeholder="Empty"
-            minRows={10}
-            style={{ width: '100%' }}
-        />
-        </CardContent>
-        <CardActions>
-            <Button size="small">Learn More</Button>
-        </CardActions>
-        </Card>
+        <Sheet variant='plain' sx={{width:'100%', height:'100%', display: 'flex', flexDirection:'column', gap:'4px', bgcolor:'transparent', width:'auto'}}>
+            <Card variant='soft'>
+                Tutaj umieść swój kod:
+            </Card>
+            <Card variant='soft'>
+                <Editor
+                    value={code}
+                    onValueChange={code => setCode(code)}
+                    highlight={code => highlight(code, languages.js)}
+                    padding={10}
+                    style={{
+                        fontFamily: '"Fira code", "Fira Mono", monospace',
+                        fontSize: 14,
+                    }}
+                />
+            </Card>
+            <Card variant='soft'>
+                Wynik działania kodu:
+            </Card>
+            <Card variant='soft'>
+                {result}
+            </Card>
+        </Sheet>
     );
 }
 

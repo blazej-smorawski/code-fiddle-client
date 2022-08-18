@@ -1,29 +1,41 @@
 import React, { useState, useEffect } from 'react';
 
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box'
-import { TableContainer } from '@mui/material';
+import Card from '@mui/joy/Card';
+import Sheet from '@mui/joy/Sheet'
+import AspectRatio from '@mui/joy/AspectRatio';
 
+const colors = ['hsl(120 80% 0%)', 'hsl(120 80% 10%)', 'hsl(120 80% 20%)', 'hsl(120 80% 30%)',
+                'hsl(120 80% 30%)', 'hsl(120 80% 40%)', 'hsl(120 80% 50%)', 'hsl(120 80% 60%)']
+
+function Pixel(props) {
+    const color = colors[props.color]
+    return (<Card 
+        variant='solid' 
+        sx={
+            {
+                width:'100%',
+                margin:'2px',
+                bgcolor: color
+            }
+        }
+    />);
+}
 
 function PixelsBlock(props) {
-    const pixel = (
-        <Paper elevation={1} sx={{ margin: '1vh', width: '4vh', height: '4vh', background: 'red'}}/>
-    );
-    const grid = props.pixels.map((row) => <Box sx={{ display: 'inline-grid' }}>{row.map((pixel_value) => <div>{pixel}</div>)}</Box>);
-    console.log('200 OK');
+    const grid = <Sheet variant='plain' sx={{width:'100%', height:'100%', display: 'flex', flexDirection:'column', bgcolor:'transparent'}}> {
+        props.pixels.map((row) => 
+            <Sheet variant='plain' sx={{width:'100%', height:'100%', display: 'flex', flexDirection:'row', bgcolor:'transparent'}}>
+                {row.map((pixel_value) => <Pixel color={pixel_value}/>)}
+            </Sheet>)
+    } </Sheet>
+    
+
     return (
-        <Card sx={{}}>
-        <CardContent>
-            {grid}
-        </CardContent>
-        </Card>
+        <AspectRatio variant='plain' ratio='1/1'>
+            <Card variant='soft'>
+                {grid}
+            </Card>
+        </AspectRatio>
     );
 }
 
