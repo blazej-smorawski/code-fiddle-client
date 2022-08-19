@@ -4,8 +4,8 @@ import Card from '@mui/joy/Card';
 import Sheet from '@mui/joy/Sheet'
 import AspectRatio from '@mui/joy/AspectRatio';
 
-const colors = ['hsl(120 80% 0%)', 'hsl(120 80% 10%)', 'hsl(120 80% 20%)', 'hsl(120 80% 30%)',
-                'hsl(120 80% 30%)', 'hsl(120 80% 40%)', 'hsl(120 80% 50%)', 'hsl(120 80% 60%)']
+const colors = ['hsl(210 80% 0%)', 'hsl(210 80% 10%)', 'hsl(210 80% 20%)', 'hsl(210 80% 30%)',
+                'hsl(210 80% 30%)', 'hsl(210 80% 40%)', 'hsl(210 80% 50%)', 'hsl(210 80% 60%)']
 
 function Pixel(props) {
     const color = colors[props.color]
