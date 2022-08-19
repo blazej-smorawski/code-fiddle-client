@@ -5,11 +5,13 @@ import * as utils from "../utils/arrays"
 import React, { useState, useEffect } from 'react';
 import Interpreter from 'js-interpreter';
 import Grid from '@mui/material/Unstable_Grid2';
+import LoadingCard from './LoadingCard';
 
 function CodeSpace(props) {
     const [pixels, setPixels] = useState(utils.createArray(8,8));
+    const [pixelsLoaded, setPixelsLoaded] = useState(false);
     const [resultPixels, setResultPixels] = useState(utils.createArray(8,8));
-    const [result, setResult] = useState('Czekam!')
+    const [result, setResult] = useState('')
 
     const exampleCode = `
 // Na ten moment dodałem dwie funkcje do manipulacji pixeli.
@@ -45,6 +47,7 @@ JSON.stringify(pixels);
 `;
 
     useEffect( () => {
+        console.log('Pixele');
         for(var x = 0; x<pixels.length; x++) {
             for(var y = 0; y<pixels[x].length; y++) {
                 let minimum = 0;
@@ -53,6 +56,7 @@ JSON.stringify(pixels);
                 resultPixels[x][y] = 0;
             }
         }
+        setPixelsLoaded(true);
     }, []);
 
     function initInterpreter(interpreter, globalObject) {
@@ -86,8 +90,8 @@ JSON.stringify(pixels);
         setResultPixels(JSON.parse(interpreter.value));
     }
 
-    return (
-        <Grid sx={{ m: 1 }} container spacing={{ xs: 2, md: 3 }}>
+    return pixelsLoaded ?(
+        <Grid sx={{m: 1 }} container spacing={{ xs: 2, md: 3 }}>
             <Grid xs={12} sm={3}>
                 <PixelsBlock pixels={pixels}/>
             </Grid>
@@ -98,7 +102,19 @@ JSON.stringify(pixels);
                 <PixelsBlock pixels={resultPixels}/>
             </Grid>
         </Grid>
-    )
+    ):(
+        <Grid sx={{m: 1 }} container spacing={{ xs: 2, md: 3 }}>
+            <Grid xs={12} sm={3}>
+                <LoadingCard ratio='1/1'/>
+            </Grid>
+            <Grid xs={12} sm={6}>
+                <CodeBlock code={exampleCode} result={result} runCode={runCode}/>
+            </Grid>
+            <Grid xs={12} sm={3}>
+                <LoadingCard ratio='1/1'/>
+            </Grid>
+        </Grid>
+    );
 }
 
 export default CodeSpace

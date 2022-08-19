@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import CodeSpace from './components/CodeSpace';
-import Interpreter from 'js-interpreter';
+import React, { useState, useEffect, Suspense } from 'react';
+//import CodeSpace from './components/CodeSpace';
 
 import { CssVarsProvider, extendTheme } from '@mui/joy/styles';
 import { Header } from './components/Header';
+import LoadingCard from './components/LoadingCard';
 
 const githubTheme = extendTheme({
   colorSchemes: {
@@ -68,18 +68,15 @@ const githubTheme = extendTheme({
 
 
 function App() {
-  const [result, setResult] = useState('Working...')
-  const myInterpreter = new Interpreter('var x = 4;x+54');
-  useEffect(() => {
-    myInterpreter.run()
-    setResult(myInterpreter.value)
-  })
+  const CodeSpace = React.lazy(() => import('./components/CodeSpace'));
 
   return (
     <div>
       <CssVarsProvider theme={githubTheme}>
         <Header/>
-        <CodeSpace/>
+        <Suspense fallback={<LoadingCard ratio='16/4'/>}>
+          <CodeSpace/>
+        </Suspense>
       </CssVarsProvider>
     </div>
   );

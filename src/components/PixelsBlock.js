@@ -29,7 +29,7 @@ function PixelsBlock(props) {
             </Sheet>)
     } </Sheet>
     
-
+    console.log('Grid render?');
     return (
         <AspectRatio variant='plain' ratio='1/1'>
             <Card variant='soft'>

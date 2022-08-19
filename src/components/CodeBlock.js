@@ -39,7 +39,7 @@ function CodeBlock(props) {
                 </Box>
             </Card>
             <Badge badgeContent='Wynik' color='primary' variant='outlined' anchorOrigin={{vertical: 'top',horizontal: 'left',}}/>
-            <Card variant='soft'>
+            <Card variant='soft'>  
                 {result}
             </Card>
         </Sheet>
