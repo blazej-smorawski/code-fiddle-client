@@ -1,5 +1,6 @@
 {
-  "name": "client",
+  "name": "code-fiddle-client",
+  "homepage": "https://blazej-smorawski.github.io/code-fiddle-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

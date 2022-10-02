@@ -16,7 +16,7 @@ function CodeBlock(props) {
 
     let resultCard = <LoadingCard ratio="16/2"/>;
     if(result != '') {
-        resultCard = <Card variant='soft' sx={{'white-space': 'pre-wrap'}}> {result} </Card>
+        resultCard = <Card variant='soft' sx={{'white-space': 'pre-wrap'}}>{result}</Card>
     }
 
     return (

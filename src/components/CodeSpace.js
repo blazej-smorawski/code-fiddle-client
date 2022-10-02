@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Grid from '@mui/material/Unstable_Grid2';
 
 function CodeSpace(props) {
-    const [result, setResult] = useState('Czekam...\ntest\n t\n')
+    const [result, setResult] = useState('Czekam...')
     const ip = "server.blazej-smorawski.com"
     const exampleCode = `
 x = 5
