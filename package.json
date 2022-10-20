@@ -21,6 +21,7 @@
     "react-scripts": "5.0.1",
     "react-simple-code-editor": "^0.13.0",
     "react-spinners": "^0.13.4",
+    "react-textarea-autosize": "^8.3.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
